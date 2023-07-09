@@ -25,16 +25,19 @@ function MailList() {
   return (
     <div>
       {" "}
-      {email.map(({ id, data: { message, subject, timestamp, to, key } }) => (
-        <EmailRow
-          key={id}
-          id={id}
-          title={to}
-          subject={subject}
-          description={message}
-          time={new Date(timestamp?.seconds * 1000).toUTCString()}
-        />
-      ))}
+      {email.map(
+        ({ id, data: { message, subject, timestamp, to, key, userName } }) => (
+          <EmailRow
+            key={id}
+            id={id}
+            title={to}
+            subject={subject}
+            description={message}
+            userName={userName}
+            time={new Date(timestamp?.seconds * 1000).toUTCString()}
+          />
+        )
+      )}
     </div>
   );
 }

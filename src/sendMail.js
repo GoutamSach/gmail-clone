@@ -2,13 +2,15 @@ import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sendMessageClose } from "./features/mailSlice";
 import { collection, doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "./firebase";
+import { selectUser } from "./features/userSlice";
 
 function SendMail() {
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
   const {
     register,
     handleSubmit,
@@ -23,6 +25,7 @@ function SendMail() {
       subject: data.subject,
       message: data.Message,
       timestamp: serverTimestamp(),
+      userName: user.dispalyName,
     });
     dispatch(sendMessageClose());
   };

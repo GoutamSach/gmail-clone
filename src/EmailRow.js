@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectMail } from "./features/mailSlice";
 import { selectUser } from "./features/userSlice";
 
-function EmailRow({ title, subject, description, time, id }) {
+function EmailRow({ title, subject, description, time, id, userName }) {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ function EmailRow({ title, subject, description, time, id }) {
               <LabelImportantIcon className=" text-gray-600" />
             </IconButton>
           </div>
-          <h2 className=" font-bold pr-24">{user?.dispalyName}</h2>
+          <h2 className=" font-bold pr-24">{userName}</h2>
           <div className=" flex flex-row justify-between flex-1 items-center  pr-2">
             <div className=" flex    flex-row items-center  ">
               <p className="font-bold ">{subject} &nbsp;</p>
